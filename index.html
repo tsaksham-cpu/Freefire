@@ -1,292 +1,149 @@
 <!DOCTYPE html>
--<html>
-+<html lang="en">
- <head>
--  <title>My Website</title>
-+  <meta charset="UTF-8" />
-+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-+  <title>Free Fire Tournament Registration</title>
-+  <style>
-+    :root {
-+      --bg: #0b1020;
-+      --panel: #141b34;
-+      --panel-2: #1c2547;
-+      --text: #f8fbff;
-+      --muted: #9eb0d1;
-+      --accent: #ff7138;
-+      --accent-2: #ffd166;
-+      --ok: #2dd4bf;
-+      --border: #2b3767;
-+    }
-+
-+    * {
-+      box-sizing: border-box;
-+      font-family: Arial, Helvetica, sans-serif;
-+    }
-+
-+    body {
-+      margin: 0;
-+      min-height: 100vh;
-+      background: radial-gradient(circle at top, #1b2250, var(--bg) 45%);
-+      color: var(--text);
-+      padding: 20px;
-+    }
-+
-+    .container {
-+      max-width: 900px;
-+      margin: 0 auto;
-+      display: grid;
-+      gap: 20px;
-+    }
-+
-+    .card {
-+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
-+      border: 1px solid var(--border);
-+      border-radius: 14px;
-+      padding: 22px;
-+      box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35);
-+    }
-+
-+    h1 {
-+      margin: 0 0 10px;
-+      font-size: clamp(1.7rem, 3vw, 2.5rem);
-+    }
-+
-+    h2 {
-+      margin: 0 0 14px;
-+      font-size: 1.2rem;
-+      color: var(--accent-2);
-+    }
-+
-+    p {
-+      margin: 8px 0;
-+      line-height: 1.5;
-+      color: var(--muted);
-+    }
-+
-+    .highlight {
-+      color: var(--text);
-+      font-weight: bold;
-+    }
-+
-+    .details {
-+      display: grid;
-+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-+      gap: 12px;
-+      margin-top: 14px;
-+    }
-+
-+    .detail-box {
-+      border: 1px solid var(--border);
-+      border-radius: 10px;
-+      background: rgba(255, 255, 255, 0.04);
-+      padding: 12px;
-+    }
-+
-+    .detail-box strong {
-+      display: block;
-+      margin-bottom: 6px;
-+      color: var(--text);
-+    }
-+
-+    form {
-+      display: grid;
-+      gap: 14px;
-+    }
-+
-+    label {
-+      display: grid;
-+      gap: 8px;
-+      font-weight: bold;
-+      color: var(--text);
-+    }
-+
-+    input,
-+    textarea {
-+      width: 100%;
-+      border: 1px solid var(--border);
-+      border-radius: 10px;
-+      padding: 11px 12px;
-+      font-size: 1rem;
-+      background: rgba(0, 0, 0, 0.25);
-+      color: var(--text);
-+      outline: none;
-+    }
-+
-+    input:focus,
-+    textarea:focus {
-+      border-color: var(--accent);
-+      box-shadow: 0 0 0 3px rgba(255, 113, 56, 0.25);
-+    }
-+
-+    textarea {
-+      min-height: 95px;
-+      resize: vertical;
-+    }
-+
-+    .btn {
-+      border: none;
-+      border-radius: 10px;
-+      padding: 12px 16px;
-+      font-size: 1rem;
-+      font-weight: bold;
-+      cursor: pointer;
-+      transition: transform 0.15s ease, opacity 0.2s ease;
-+      text-align: center;
-+    }
-+
-+    .btn:hover {
-+      transform: translateY(-1px);
-+      opacity: 0.95;
-+    }
-+
-+    .btn-primary {
-+      background: linear-gradient(90deg, var(--accent), #ff4e00);
-+      color: #fff;
-+    }
-+
-+    .btn-secondary {
-+      background: #24305f;
-+      color: #fff;
-+      border: 1px solid var(--border);
-+    }
-+
-+    .actions {
-+      display: flex;
-+      flex-wrap: wrap;
-+      gap: 10px;
-+      align-items: center;
-+    }
-+
-+    .success {
-+      margin-top: 10px;
-+      color: var(--ok);
-+      font-weight: bold;
-+      min-height: 22px;
-+    }
-+
-+    .small {
-+      font-size: 0.9rem;
-+      color: var(--muted);
-+    }
-+  </style>
- </head>
- <body>
--  <h1>Hello, World!</h1>
-+  <main class="container">
-+    <section class="card">
-+      <h1>🔥 Free Fire Tournament Registration</h1>
-+      <p>Register your squad now! Team entry fee is <span class="highlight">₹100 per team</span>.</p>
-+
-+      <div class="details">
-+        <div class="detail-box">
-+          <strong>Entry Fee</strong>
-+          ₹100 per team
-+        </div>
-+        <div class="detail-box">
-+          <strong>Pay via UPI</strong>
-+          <span id="upi-id">saksham.thakur@superyes</span>
-+        </div>
-+        <div class="detail-box">
-+          <strong>Send Registration To</strong>
-+          <span id="email-id">denmark0186@gmail.com</span>
-+        </div>
-+      </div>
-+      <div class="actions" style="margin-top: 14px;">
-+        <button class="btn btn-secondary" id="copyUpi" type="button">Copy UPI ID</button>
-+        <button class="btn btn-secondary" id="copyEmail" type="button">Copy Email</button>
-+      </div>
-+    </section>
-+
-+    <section class="card">
-+      <h2>Team Details</h2>
-+      <form id="registrationForm">
-+        <label>
-+          Team Name
-+          <input type="text" id="teamName" placeholder="Enter your team name" required />
-+        </label>
-+
-+        <label>
-+          Captain Name
-+          <input type="text" id="captainName" placeholder="Enter captain name" required />
-+        </label>
-+
-+        <label>
-+          Contact Number
-+          <input type="tel" id="contactNumber" placeholder="Enter WhatsApp / phone number" required />
-+        </label>
-+
-+        <label>
-+          Payment Screenshot (upload proof)
-+          <input type="file" id="paymentProof" accept="image/*" required />
-+        </label>
-+
-+        <label>
-+          Player List (optional)
-+          <textarea id="playerList" placeholder="Enter player names / UIDs"></textarea>
-+        </label>
-+
-+        <button class="btn btn-primary" type="submit">Submit Registration by Email</button>
-+      </form>
-+      <p class="small">After submitting, your email app opens with team details. Attach the same payment screenshot in email before sending.</p>
-+      <p class="success" id="statusMessage"></p>
-+    </section>
-+  </main>
-+
-+  <script>
-+    const upiId = document.getElementById('upi-id').textContent;
-+    const emailId = document.getElementById('email-id').textContent;
-+    const statusMessage = document.getElementById('statusMessage');
-+
-+    function copyText(text, label) {
-+      navigator.clipboard.writeText(text)
-+        .then(() => {
-+          statusMessage.textContent = label + ' copied successfully.';
-+        })
-+        .catch(() => {
-+          statusMessage.textContent = 'Copy failed. Please copy manually.';
-+        });
-+    }
-+
-+    document.getElementById('copyUpi').addEventListener('click', () => copyText(upiId, 'UPI ID'));
-+    document.getElementById('copyEmail').addEventListener('click', () => copyText(emailId, 'Email'));
-+
-+    document.getElementById('registrationForm').addEventListener('submit', (event) => {
-+      event.preventDefault();
-+
-+      const teamName = document.getElementById('teamName').value.trim();
-+      const captainName = document.getElementById('captainName').value.trim();
-+      const contactNumber = document.getElementById('contactNumber').value.trim();
-+      const playerList = document.getElementById('playerList').value.trim() || 'Not provided';
-+      const proofInput = document.getElementById('paymentProof');
-+
-+      if (!proofInput.files.length) {
-+        statusMessage.textContent = 'Please upload payment screenshot before submitting.';
-+        return;
-+      }
-+
-+      const proofFileName = proofInput.files[0].name;
-+
-+      const subject = encodeURIComponent('Free Fire Tournament Registration - ' + teamName);
-+      const body = encodeURIComponent(
-+        'Team Name: ' + teamName + '\n' +
-+        'Captain Name: ' + captainName + '\n' +
-+        'Contact Number: ' + contactNumber + '\n' +
-+        'Player List: ' + playerList + '\n' +
-+        'Payment Proof File: ' + proofFileName + '\n\n' +
-+        'Entry Fee Paid: ₹100\n' +
-+        'UPI ID Used: ' + upiId + '\n\n' +
-+        'Please find attached payment screenshot.'
-+      );
-+
-+      window.location.href = 'mailto:' + emailId + '?subject=' + subject + '&body=' + body;
-+      statusMessage.textContent = 'Email draft opened. Please attach the screenshot and send.';
-+    });
-+  </script>
- </body>
- </html>
--
- 
-EOF
-)
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Fire Tournament Registration</title>
 
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0b1020;
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .card {
+      background: #141b34;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin-top: 0;
+      color: #ff7138;
+    }
+
+    h2 {
+      color: #ffd166;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background: #ff7138;
+      color: white;
+    }
+
+    .btn-secondary {
+      background: #24305f;
+      color: white;
+      margin-right: 8px;
+    }
+
+    .success {
+      margin-top: 10px;
+      color: #2dd4bf;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="card">
+      <h1>🔥 Free Fire Tournament Registration</h1>
+      <p>Entry Fee: <strong>₹100 per team</strong></p>
+      <p>Pay via UPI: <strong id="upi-id">saksham.thakur@superyes</strong></p>
+      <p>Send Registration To: <strong id="email-id">denmark0186@gmail.com</strong></p>
+
+      <button class="btn-secondary" onclick="copyText('saksham.thakur@superyes')">Copy UPI</button>
+      <button class="btn-secondary" onclick="copyText('denmark0186@gmail.com')">Copy Email</button>
+
+      <p class="success" id="statusMessage"></p>
+    </div>
+
+    <div class="card">
+      <h2>Team Details</h2>
+
+      <form id="registrationForm">
+        <label>Team Name</label>
+        <input type="text" id="teamName" required>
+
+        <label>Captain Name</label>
+        <input type="text" id="captainName" required>
+
+        <label>Contact Number</label>
+        <input type="tel" id="contactNumber" required>
+
+        <label>Player List (Optional)</label>
+        <textarea id="playerList"></textarea>
+
+        <button type="submit" class="btn-primary">Submit Registration</button>
+      </form>
+
+      <p class="success" id="formStatus"></p>
+    </div>
+
+  </div>
+
+  <script>
+    function copyText(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          document.getElementById("statusMessage").innerText = "Copied successfully!";
+        })
+        .catch(() => {
+          document.getElementById("statusMessage").innerText = "Copy failed. Copy manually.";
+        });
+    }
+
+    document.getElementById("registrationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const team = document.getElementById("teamName").value;
+      const captain = document.getElementById("captainName").value;
+      const contact = document.getElementById("contactNumber").value;
+      const players = document.getElementById("playerList").value || "Not provided";
+
+      const subject = encodeURIComponent("Free Fire Tournament Registration - " + team);
+      const body = encodeURIComponent(
+        "Team Name: " + team + "\n" +
+        "Captain Name: " + captain + "\n" +
+        "Contact Number: " + contact + "\n" +
+        "Player List: " + players + "\n\n" +
+        "Entry Fee Paid: ₹100\nUPI ID Used: saksham.thakur@superyes"
+      );
+
+      window.location.href = "mailto:denmark0186@gmail.com?subject=" + subject + "&body=" + body;
+
+      document.getElementById("formStatus").innerText = "Email draft opened. Send it after checking.";
+    });
+  </script>
+
+</body>
+</html>
